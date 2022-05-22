@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./styles.css";
+import LeftContainer from "./LeftContainer";
+import RightImage from "./RightImage";
 
 function App() {
+  const [stage, setStage] = React.useState(0);
+  const [answers, setAnswers] = React.useState({
+    0: '',
+    1: '',
+    2: ''
+  });
+
+  if (stage === 3) {
+    alert('Form Data: ' + JSON.stringify(answers))
+}
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="stage">
+      <LeftContainer stage={stage} setStage={setStage} answers={answers} setAnswers={setAnswers}/>
+      <RightImage stage={stage}/>
     </div>
   );
 }
